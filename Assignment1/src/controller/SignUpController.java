@@ -3,6 +3,7 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import model.User;
 import model.UserDB;
 import model.UserIO;
@@ -21,7 +22,9 @@ public class SignUpController {
     @FXML
     Button photo;
     @FXML
-    Label alert;
+    Label alert, photo_url;
+
+    String photoPath;
 
     public void signUp() throws Exception {
         /*
@@ -32,6 +35,9 @@ public class SignUpController {
         // check required fields
         if (!areAllRequiredFieldsFilled()) {
             errorAlert("Fields in RED are REQUIRED");
+            return;
+        } else if (this.photoPath == null) {
+            errorAlert("Please supply a Photo");
             return;
         } else if (!pw1.getText().equals(pw2.getText())) { // pw1 and pw2 are not the same
             errorAlert("Password fields are not the same");
@@ -54,13 +60,9 @@ public class SignUpController {
          * Success, create the account
          *
          */
-        User user = new User(username.getText(), "email", "phone", pw1.getText(), "");
-
-        // add to some list?
+        User user = new User(username.getText(), "email", "phone", pw1.getText(), this.photoPath);
 
         UserDB.getUsers().add(user);
-
-        System.out.println(UserDB.getUsers());
 
         try {
             UserIO.writeUsers(UserDB.getUsers());
@@ -68,8 +70,6 @@ public class SignUpController {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
-
-        successAlert("User added");
 
         this.openLoginView();
     }
@@ -84,6 +84,13 @@ public class SignUpController {
 
     public void openLoginView() throws Exception {
         new LoginJavaFXView().loadView();
+
+        this.closeWindow();
+    }
+
+    private void closeWindow() {
+        Stage stage = (Stage) username.getScene().getWindow();
+        stage.close();
     }
 
     public void selectPhoto() {
@@ -91,7 +98,9 @@ public class SignUpController {
         chooser.setTitle("Open File");
         File file = chooser.showOpenDialog(photo.getScene().getWindow());
 
-        // save the file somewhere in this controller
+        this.photoPath = file.getAbsolutePath();
+
+        photo_url.setText(file.getName());
     }
 
     /*
