@@ -13,27 +13,17 @@ import java.util.regex.Pattern;
 
 public class SignUpController {
     @FXML
-    TextField firstName;
+    TextField firstName, lastName, uname, email, gender;
     @FXML
-    TextField lastName;
-    @FXML
-    TextField uname;
-    @FXML
-    PasswordField pw1;
-    @FXML
-    PasswordField pw2;
-    @FXML
-    TextField email;
+    PasswordField pw1, pw2;
     @FXML
     DatePicker dob;
-    @FXML
-    TextField gender;
     @FXML
     Button photo;
     @FXML
     Label alert;
 
-    public void signUp() {
+    public void signUp() throws Exception {
         /*
          *
          * Validation
@@ -61,8 +51,6 @@ public class SignUpController {
          * Success, create the account
          *
          */
-        successAlert("SUCCESS");
-
         User user = new User(uname.getText(), "email", "phone", pw1.getText(), "");
 
         // add to some list?
@@ -77,6 +65,10 @@ public class SignUpController {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
+
+        successAlert("User added");
+
+        this.openLoginView();
     }
 
     public void styleTextField(TextField field, String color) {

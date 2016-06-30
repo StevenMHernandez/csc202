@@ -5,6 +5,7 @@ import javafx.scene.control.TextField;
 import model.User;
 import model.UserDB;
 import view.SignUpJavaFXView;
+import view.WelcomeJavaFXView;
 
 public class LoginController {
     @FXML
@@ -12,11 +13,10 @@ public class LoginController {
     @FXML
     TextField pw;
 
-    public void authenticate() {
-        System.out.println(username.getText());
-        System.out.println(pw.getText());
-
-        System.out.println(attemptLogin(username.getText(), pw.getText()) ? "Hey!" : "Wrong");
+    public void authenticate() throws Exception {
+        if (this.attemptLogin(username.getText(), pw.getText())) {
+            this.openWelcomeView(username.getText());
+        }
     }
 
     public boolean attemptLogin(String username, String password) {
@@ -31,5 +31,9 @@ public class LoginController {
 
     public void openSignUpView() throws Exception {
         new SignUpJavaFXView();
+    }
+
+    public void openWelcomeView(String username) throws Exception {
+        new WelcomeJavaFXView(username);
     }
 }
