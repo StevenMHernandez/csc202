@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 
 public class SignUpController {
     @FXML
-    TextField firstName, lastName, uname, email, gender;
+    TextField firstName, lastName, username, email, gender;
     @FXML
     PasswordField pw1, pw2;
     @FXML
@@ -38,11 +38,14 @@ public class SignUpController {
             styleTextField(pw1, "#c66");
             styleTextField(pw2, "#c66");
             return;
+        } else if (UserDB.usernameExists(username.getText())) {
+            errorAlert("That username is not available");
+            return;
         } else if (!isValidEmail(email.getText())) {
             errorAlert("Email does not appear to be valid. `xxxx@mail.xxx`");
             return;
         } else if (!isValidPassword(pw1.getText())) {
-            errorAlert("Password must have at least 1 number, 1 upper case letter, 1 lower case letter, 1 special character");
+            errorAlert("Password needs 1 number, upper case & lower case letter and 1 special character");
             return;
         }
 
@@ -51,7 +54,7 @@ public class SignUpController {
          * Success, create the account
          *
          */
-        User user = new User(uname.getText(), "email", "phone", pw1.getText(), "");
+        User user = new User(username.getText(), "email", "phone", pw1.getText(), "");
 
         // add to some list?
 
@@ -120,7 +123,7 @@ public class SignUpController {
         if (!checkRequiredField(lastName)) result = false;
         if (!checkRequiredField(dob)) result = false;
         if (!checkRequiredField(gender)) result = false;
-        if (!checkRequiredField(uname)) result = false;
+        if (!checkRequiredField(username)) result = false;
         if (!checkRequiredField(email)) result = false;
         if (!checkRequiredField(pw1)) result = false;
         if (!checkRequiredField(pw2)) result = false;

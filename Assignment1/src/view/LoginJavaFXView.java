@@ -30,7 +30,7 @@ public class LoginJavaFXView extends Application {
 
         Parent loginView = FXMLLoader.load(getClass().getResource("LoginJavaFX.fxml"));
         primaryStage.setTitle("Login Page");
-        primaryStage.setScene(new Scene(loginView, 300, 400));
+        primaryStage.setScene(new Scene(loginView, 600, 400));
         primaryStage.show();
     }
 

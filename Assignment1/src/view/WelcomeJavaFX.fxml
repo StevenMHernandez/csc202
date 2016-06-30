@@ -29,5 +29,6 @@
          </font>
       </Label>
       <Label fx:id="username" text="" GridPane.rowIndex="1" />
+      <Button onMouseClicked="#logOut" mnemonicParsing="false" text="Log Out" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
    </children>
 </GridPane>

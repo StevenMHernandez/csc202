@@ -11,7 +11,7 @@ public class SignUpJavaFXView {
         Stage signupStage = new Stage();
         Parent signUpView = FXMLLoader.load(getClass().getResource("SignUpJavaFX.fxml"));
         signupStage.setTitle("Sign Up");
-        signupStage.setScene(new Scene(signUpView, 300, 400));
+        signupStage.setScene(new Scene(signUpView, 600, 400));
         signupStage.show();
     }
 }
