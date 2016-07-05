@@ -1,10 +1,10 @@
 package model;
 
 import java.io.*;
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class UserIO {
-    public static void writeUsers(ArrayList<User> users) throws IOException {
+    public static void writeUsers(LinkedList<User> users) throws IOException {
         ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream("users.dat"));
 
         output.writeObject(users);

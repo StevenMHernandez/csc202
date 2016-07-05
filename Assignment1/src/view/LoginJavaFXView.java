@@ -10,7 +10,7 @@ import model.UserDB;
 import model.UserIO;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class LoginJavaFXView extends Application {
 
@@ -29,7 +29,7 @@ public class LoginJavaFXView extends Application {
 
     public static void loadDB() {
         try {
-            UserDB.setUsers((ArrayList<User>) UserIO.readUsers());
+            UserDB.setUsers((LinkedList<User>) UserIO.readUsers());
         } catch (IOException e) {
             e.printStackTrace();
             System.err.print("Fail to open users.dat file.");

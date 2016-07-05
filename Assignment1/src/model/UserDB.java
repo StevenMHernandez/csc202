@@ -1,19 +1,19 @@
 package model;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class UserDB {
-    private static ArrayList<User> users = new ArrayList<User>();
+    private static LinkedList<User> users = new LinkedList<User>();
 
     public UserDB() {
 
     }
 
-    public static ArrayList<User> getUsers() {
+    public static LinkedList<User> getUsers() {
         return users;
     }
 
-    public static void setUsers(ArrayList<User> users) {
+    public static void setUsers(LinkedList<User> users) {
         UserDB.users = users;
     }
 

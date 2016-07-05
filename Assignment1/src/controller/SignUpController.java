@@ -91,6 +91,9 @@ public class SignUpController {
     public void selectPhoto() {
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Open File");
+        chooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
+        );
         File file = chooser.showOpenDialog(photo.getScene().getWindow());
 
         if (file != null) {
