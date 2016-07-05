@@ -48,9 +48,10 @@
                 <PasswordField fx:id="pw1" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                 <PasswordField fx:id="pw2" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                 <TextField fx:id="email" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                <DatePicker fx:id="dob" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                <TextField fx:id="gender" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                <Button fx:id="photo" mnemonicParsing="false" onMouseClicked="#selectPhoto" text="Browse..." GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                <TextField fx:id="phone" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                <DatePicker fx:id="dob" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                <TextField fx:id="gender" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                <Button fx:id="photo" mnemonicParsing="false" onMouseClicked="#selectPhoto" text="Browse..." GridPane.columnIndex="1" GridPane.rowIndex="10" />
 
 
                 <Label contentDisplay="RIGHT" text="First Name" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
@@ -83,25 +84,30 @@
                         <Insets left="15.0" right="15.0" />
                     </GridPane.margin>
                 </Label>
-                <Label contentDisplay="RIGHT" text="DOB" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                <Label contentDisplay="RIGHT" text="Phone" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
                     <GridPane.margin>
                         <Insets left="15.0" right="15.0" />
                     </GridPane.margin>
                 </Label>
-                <Label contentDisplay="RIGHT" text="Gender" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+                <Label contentDisplay="RIGHT" text="DOB" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
                     <GridPane.margin>
                         <Insets left="15.0" right="15.0" />
                     </GridPane.margin>
                 </Label>
-                <Label contentDisplay="RIGHT" text="Photo" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
+                <Label contentDisplay="RIGHT" text="Gender" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
+                    <GridPane.margin>
+                        <Insets left="15.0" right="15.0" />
+                    </GridPane.margin>
+                </Label>
+                <Label contentDisplay="RIGHT" text="Photo" GridPane.halignment="RIGHT" GridPane.rowIndex="10">
                     <GridPane.margin>
                         <Insets left="15.0" right="15.0" />
                     </GridPane.margin>
                 </Label>
 
-                <Button mnemonicParsing="false" onMouseClicked="#signUp" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #6cc;" text="Sign Up" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                <Button mnemonicParsing="false" onMouseClicked="#openLoginView" prefHeight="27.0" prefWidth="75.0" style="-fx-background-color: #eee;" text="Login" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER" />
-            <Label fx:id="photo_url" contentDisplay="RIGHT" text="Select a Photo" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="9" />
+                <Button mnemonicParsing="false" onMouseClicked="#signUp" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #6cc;" text="Sign Up" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                <Button mnemonicParsing="false" onMouseClicked="#openLoginView" prefHeight="27.0" prefWidth="75.0" style="-fx-background-color: #eee;" text="Login" GridPane.halignment="CENTER" GridPane.rowIndex="11" GridPane.valignment="CENTER" />
+            <Label fx:id="photo_url" contentDisplay="RIGHT" text="Select a Photo" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="10" />
             </children>
             <GridPane.margin>
                 <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />

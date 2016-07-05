@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 
 public class SignUpController {
     @FXML
-    TextField firstName, lastName, username, email, gender;
+    TextField firstName, lastName, username, email, phone, gender;
     @FXML
     PasswordField pw1, pw2;
     @FXML
@@ -60,7 +60,7 @@ public class SignUpController {
          * Success, create the account
          *
          */
-        User user = new User(username.getText(), "email", "phone", pw1.getText(), this.photoPath);
+        User user = new User(username.getText(), email.getText(), phone.getText(), pw1.getText(), this.photoPath);
 
         UserDB.getUsers().add(user);
 
