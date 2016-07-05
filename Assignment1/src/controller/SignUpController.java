@@ -82,6 +82,24 @@ public class SignUpController {
         field.setStyle("-fx-background-color: " + color + ";");
     }
 
+    /*
+     *
+     * Open new window methods
+     *
+     */
+
+    public void selectPhoto() {
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Open File");
+        File file = chooser.showOpenDialog(photo.getScene().getWindow());
+
+        if (file != null) {
+            this.photoPath = file.getAbsolutePath();
+
+            photo_url.setText(file.getName());
+        }
+    }
+
     public void openLoginView() throws Exception {
         new LoginJavaFXView().loadView();
 
@@ -91,16 +109,6 @@ public class SignUpController {
     private void closeWindow() {
         Stage stage = (Stage) username.getScene().getWindow();
         stage.close();
-    }
-
-    public void selectPhoto() {
-        FileChooser chooser = new FileChooser();
-        chooser.setTitle("Open File");
-        File file = chooser.showOpenDialog(photo.getScene().getWindow());
-
-        this.photoPath = file.getAbsolutePath();
-
-        photo_url.setText(file.getName());
     }
 
     /*
@@ -173,9 +181,5 @@ public class SignUpController {
 
     public void errorAlert(String alertString) {
         showAlert(alertString, "#c66");
-    }
-
-    public void successAlert(String alertString) {
-        showAlert(alertString, "#6cc");
     }
 }
