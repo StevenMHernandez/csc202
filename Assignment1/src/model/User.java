@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 
-public class User extends Person implements Serializable {
+public class User extends Person implements Serializable, Comparable<User> {
     private String username;
     private String email;
     private String phone;
@@ -75,5 +75,14 @@ public class User extends Person implements Serializable {
                 ", password='" + password + '\'' +
                 ", photo='" + photo + '\'' +
                 '}';
+    }
+
+    public boolean equals(User user) {
+        return this.username.equals(user.username);
+    }
+
+    @Override
+    public int compareTo(User user) {
+        return this.username.compareTo(user.username);
     }
 }
