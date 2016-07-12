@@ -61,4 +61,11 @@ public class LinkedListQueue<T> implements IQueue<T> {
             return 0;
         }
     }
+
+    @Override
+    public String toString() {
+        return "LinkedListIndexedList{" +
+                "list={" + this.head + "}" +
+                '}';
+    }
 }

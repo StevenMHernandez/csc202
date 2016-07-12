@@ -30,4 +30,12 @@ public class LinkedListNode <T> {
     public void setPointer(LinkedListNode <T> pointer) {
         this.pointer = pointer;
     }
+
+    public String toString() {
+        return this.element + ((this.pointer != null) ? " " + this.pointer : "");
+    }
+
+//    public int compareTo(LinkedListNode node) {
+//        return this.element.compareTo(node.element);
+//    }
 }

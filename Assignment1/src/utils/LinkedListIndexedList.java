@@ -97,4 +97,12 @@ public class LinkedListIndexedList<T> implements IIndexedList<T> {
         }
         return node;
     }
+
+    @Override
+    public String toString() {
+        return "LinkedListIndexedList{" +
+                "list={" + first + "}" +
+                ", length=" + length +
+                '}';
+    }
 }

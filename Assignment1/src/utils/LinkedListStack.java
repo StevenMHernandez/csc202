@@ -1,12 +1,17 @@
 package utils;
 
+import Exceptions.EmptyListException;
 import utils.Interfaces.IStack;
 
 public class LinkedListStack<T> implements IStack<T> {
     private LinkedListNode<T> top = null;
 
     @Override
-    public T top() {
+    public T top() throws Exception {
+        if (this.isEmpty()) {
+            throw new EmptyListException("Cannot top an empty Stack");
+        }
+
         return top.getElement();
     }
 
@@ -45,5 +50,12 @@ public class LinkedListStack<T> implements IStack<T> {
         } else {
             return 0;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "LinkedListIndexedList{" +
+                "list={" + this.top + "}" +
+                '}';
     }
 }

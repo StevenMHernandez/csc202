@@ -1,15 +1,23 @@
 package utils;
 
-public class ArrayBase <T> {
+import java.util.Arrays;
+
+public class ArrayBase<T> {
     public int size = 0;
     public T[] array;
 
     ArrayBase() {
-        this.array = (T[]) new Object[10];
+        this.newArray();
     }
 
     protected void enlarge() {
+        T[] old = this.array;
+
         this.array = (T[]) new Object[array.length + 10];
+
+        for (int i = 0; i <= old.length; i++) {
+            this.array[i] = old[i];
+        }
     }
 
     public boolean isEmpty() {
@@ -22,5 +30,17 @@ public class ArrayBase <T> {
 
     public int size() {
         return this.size;
+    }
+
+    protected void newArray() {
+        this.array = (T[]) new Object[10];
+    }
+
+    @Override
+    public String toString() {
+        return "ArrayBase{" +
+                "size=" + size +
+                ", array=" + Arrays.toString(array) +
+                '}';
     }
 }

@@ -1,7 +1,9 @@
 package utils.Interfaces;
 
+import Exceptions.EmptyListException;
+
 public interface IStack<T> {
-    public T top();
+    public T top() throws Exception;
 
     public T pop();
 

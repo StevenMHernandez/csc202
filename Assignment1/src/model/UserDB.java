@@ -1,5 +1,7 @@
 package model;
 
+import utils.LinkedListStack;
+
 import java.util.LinkedList;
 
 public class UserDB {
