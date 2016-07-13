@@ -2,42 +2,42 @@ package utils;
 
 import utils.Interfaces.IOrderedList;
 
-public class LinkedListOrderedList<T> implements IOrderedList<T> {
+public class LinkedListOrderedList<T extends Comparable<T>> implements IOrderedList<T> {
     private LinkedListNode<T> first = null;
     private int length = 0;
 
     @Override
     public void add(T t) {
-//        LinkedListNode<T> newNode = new LinkedListNode<T>(t, null);
-//        if (this.first == null) {
-//            first = newNode;
-//        } else {
-//            if (this.first.getElement().compareTo(t) < 0) {
-//                LinkedListNode<T> node = this.first;
-//
-//                boolean complete = false;
-//
-//                do {
-//                    if (node.getElement().compareTo(t) < 0) {
-//                        if (node.getPointer() == null) {
-//                            node.setPointer(newNode);
-//                            complete = true;
-//                        } else if (node.getPointer().getElement().compareTo(t) > 0) {
-//                            LinkedListNode<T> afterNode = node.getPointer();
-//                            node.setPointer(newNode);
-//                            newNode.setPointer(afterNode);
-//                            complete = true;
-//                        }
-//                    }
-//                    node = node.getPointer();
-//                } while (!complete);
-//            } else {
-//                newNode.setPointer(this.first);
-//                this.first = newNode;
-//            }
-//        }
-//
-//        this.length++;
+        LinkedListNode<T> newNode = new LinkedListNode<T>(t, null);
+        if (this.first == null) {
+            first = newNode;
+        } else {
+            if (this.first.getElement().compareTo(t) < 0) {
+                LinkedListNode<T> node = this.first;
+
+                boolean complete = false;
+
+                do {
+                    if (node.getElement().compareTo(t) < 0) {
+                        if (node.getPointer() == null) {
+                            node.setPointer(newNode);
+                            complete = true;
+                        } else if (node.getPointer().getElement().compareTo(t) > 0) {
+                            LinkedListNode<T> afterNode = node.getPointer();
+                            node.setPointer(newNode);
+                            newNode.setPointer(afterNode);
+                            complete = true;
+                        }
+                    }
+                    node = node.getPointer();
+                } while (!complete);
+            } else {
+                newNode.setPointer(this.first);
+                this.first = newNode;
+            }
+        }
+
+        this.length++;
     }
 
     @Override
@@ -49,12 +49,12 @@ public class LinkedListOrderedList<T> implements IOrderedList<T> {
         this.length--;
     }
 
-    private int indexOf(T t) {
+    public int indexOf(T t) {
         int count = 0;
 
         LinkedListNode<T> node = this.first;
         //for each node
-        while (node.getPointer() != null) {
+        while (node != null) {
             if (node.getElement().equals(t)) {
                 return count;
             } else {
@@ -73,7 +73,7 @@ public class LinkedListOrderedList<T> implements IOrderedList<T> {
 
     @Override
     public boolean isEmpty() {
-        return this.first != null;
+        return this.first == null;
     }
 
     @Override
@@ -89,6 +89,7 @@ public class LinkedListOrderedList<T> implements IOrderedList<T> {
     @Override
     public void reset() {
         this.first = null;
+        this.length = 0;
     }
 
     @Override

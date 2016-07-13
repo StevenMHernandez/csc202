@@ -38,9 +38,16 @@ public class ArrayBase<T> {
 
     @Override
     public String toString() {
-        return "ArrayBase{" +
-                "size=" + size +
-                ", array=" + Arrays.toString(array) +
-                '}';
+        String val = "ArrayBase{" +
+                "array={";
+
+        for (int i = 0; i < this.size(); i++) {
+            val += this.array[i];
+            if (i != this.size() - 1) val += " ";
+        }
+
+        val += "}, size=" + size + "}";
+
+        return val;
     }
 }

@@ -1,20 +1,20 @@
 package Tests;
 
 import org.junit.Test;
+import utils.ArrayIndexedList;
 
-import utils.LinkedListIndexedList;
+import static org.junit.Assert.assertEquals;
 
-import static org.junit.Assert.*;
-
-public class LinkedListIndexedListTest {
-    LinkedListIndexedList<String> list = new LinkedListIndexedList<String>();
+public class ArrayIndexedListTest {
+    ArrayIndexedList<String> list = new ArrayIndexedList<String>();
 
     @Test
     public void testAdd() throws Exception {
         list.add("One");
         list.add("Two");
         list.add("Three");
-        assertEquals("Queue should be One Two Three", "LinkedListIndexedList{list={One Two Three}, length=3}", (String)list.toString());
+
+        assertEquals("Queue should be One Two Three", "ArrayBase{array={One Two Three}, size=3}", (String)list.toString());
     }
 
     @Test
@@ -23,7 +23,7 @@ public class LinkedListIndexedListTest {
         list.add("Two");
         list.add("Three");
         list.set("2", 1);
-        assertEquals("Queue should be One 2 Three", "LinkedListIndexedList{list={One 2 Three}, length=3}", (String)list.toString());
+        assertEquals("Queue should be One 2 Three", "ArrayBase{array={One 2 Three}, size=3}", (String)list.toString());
     }
 
     @Test
@@ -32,7 +32,7 @@ public class LinkedListIndexedListTest {
         list.add("Two");
         list.add("Three");
         list.remove(1);
-        assertEquals("Queue should be One Three", "LinkedListIndexedList{list={One Three}, length=2}", (String)list.toString());
+        assertEquals("Queue should be One Three", "ArrayBase{array={One Three}, size=2}", (String)list.toString());
     }
 
     @Test

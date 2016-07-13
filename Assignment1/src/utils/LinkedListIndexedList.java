@@ -13,7 +13,7 @@ public class LinkedListIndexedList<T> implements IIndexedList<T> {
         if (this.first == null) {
             first = newNode;
         } else {
-            this.getNthNode(this.length).setPointer(newNode);
+            this.getNthNode(this.length - 1).setPointer(newNode);
         }
 
         this.length++;
@@ -65,7 +65,7 @@ public class LinkedListIndexedList<T> implements IIndexedList<T> {
 
     @Override
     public boolean isEmpty() {
-        return this.first != null;
+        return this.first == null;
     }
 
     @Override
@@ -81,6 +81,7 @@ public class LinkedListIndexedList<T> implements IIndexedList<T> {
     @Override
     public void reset() {
         this.first = null;
+        this.length = 0;
     }
 
     @Override
@@ -88,12 +89,15 @@ public class LinkedListIndexedList<T> implements IIndexedList<T> {
         return null;
     }
 
-    private LinkedListNode<T> getNthNode(int i) {
+    private LinkedListNode<T> getNthNode(int i) throws NullPointerException {
         int count = 0;
         LinkedListNode<T> node = this.first;
-        while (count < i) {
+        while (count < i && node != null) {
             node = node.getPointer();
             count++;
+        }
+        if (node == null) {
+            throw new NullPointerException();
         }
         return node;
     }

@@ -9,7 +9,9 @@ public class ArrayIndexedList<T> extends ArrayBase<T> implements IIndexedList<T>
         if (this.isFull()) {
             this.enlarge();
         }
-        this.array[this.size + 1] = t;
+
+        this.array[this.size] = t;
+        this.size++;
     }
 
     @Override
@@ -24,6 +26,7 @@ public class ArrayIndexedList<T> extends ArrayBase<T> implements IIndexedList<T>
         }
 
         this.array[this.size] = null;
+        this.size--;
     }
 
     @Override
@@ -63,7 +66,8 @@ public class ArrayIndexedList<T> extends ArrayBase<T> implements IIndexedList<T>
 
     @Override
     public void reset() {
-        this.newArray();
+        this.newArray(); // may not be necessary??
+        this.size = 0;
     }
 
     @Override
