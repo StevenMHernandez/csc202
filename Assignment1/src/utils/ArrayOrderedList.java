@@ -67,6 +67,8 @@ public class ArrayOrderedList<T extends Comparable<T>> extends ComparableArrayBa
     }
 
     public int indexOf(T t) {
+        if (this.size() == 0) return -1;
+
         int count = 0;
 
         while (count < this.size) {

@@ -10,7 +10,7 @@ public class WelcomeJavaFXView {
     public WelcomeJavaFXView(String name) throws Exception {
         Stage signupStage = new Stage();
         Parent signUpView = FXMLLoader.load(getClass().getResource("WelcomeJavaFX.fxml"));
-        signupStage.setTitle("Welcome " + name);
+        signupStage.setTitle("Welcome " + name + " Using LinkedListIndexedList!");
         signupStage.setScene(new Scene(signUpView, 600, 400));
         signupStage.show();
     }

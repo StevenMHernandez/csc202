@@ -31,9 +31,9 @@ public class LoginController {
     }
 
     public User attemptLogin(String username, String password) {
-        for (User user : UserDB.getUsers()) {
-            if (user.getUsername().equals(username)) {
-                if (user.getPassword().equals(password)) return user;
+        for (int i = 0; i < UserDB.getUsers().size(); i++) {
+            if (UserDB.getUsers().get(i).getUsername().equals(username)) {
+                if (UserDB.getUsers().get(i).getPassword().equals(password)) return UserDB.getUsers().get(i);
             }
         }
 

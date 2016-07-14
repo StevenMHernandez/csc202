@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import model.User;
 import model.UserDB;
 import model.UserIO;
+import utils.LinkedListIndexedList;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -29,7 +30,7 @@ public class LoginJavaFXView extends Application {
 
     public static void loadDB() {
         try {
-            UserDB.setUsers((LinkedList<User>) UserIO.readUsers());
+            UserDB.setUsers((LinkedListIndexedList<User>) UserIO.readUsers());
         } catch (IOException e) {
             e.printStackTrace();
             System.err.print("Fail to open users.dat file.");

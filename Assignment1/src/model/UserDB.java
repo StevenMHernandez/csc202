@@ -1,27 +1,28 @@
 package model;
 
+import utils.LinkedListIndexedList;
 import utils.LinkedListStack;
 
 import java.util.LinkedList;
 
 public class UserDB {
-    private static LinkedList<User> users = new LinkedList<User>();
+    private static LinkedListIndexedList<User> users = new LinkedListIndexedList<User>();
 
     public UserDB() {
 
     }
 
-    public static LinkedList<User> getUsers() {
+    public static LinkedListIndexedList<User> getUsers() {
         return users;
     }
 
-    public static void setUsers(LinkedList<User> users) {
+    public static void setUsers(LinkedListIndexedList<User> users) {
         UserDB.users = users;
     }
 
     public static boolean usernameExists(String username) {
-        for (User user : UserDB.getUsers()) {
-            if (user.getUsername().equals(username)) return true;
+        for (int i = 0; i < UserDB.getUsers().size(); i++) {
+            if (UserDB.getUsers().get(i).getUsername().equals(username)) return true;
         }
         return false;
     }

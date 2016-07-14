@@ -42,6 +42,8 @@ public class ArrayIndexedList<T> extends ArrayBase<T> implements IIndexedList<T>
 
     @Override
     public int indexOf(T t) {
+        if (this.size() == 0) return -1;
+
         int count = 0;
 
         while (count < this.size) {

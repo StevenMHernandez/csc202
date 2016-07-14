@@ -1,10 +1,11 @@
 package model;
 
+import utils.LinkedListIndexedList;
+
 import java.io.*;
-import java.util.LinkedList;
 
 public class UserIO {
-    public static void writeUsers(LinkedList<User> users) throws IOException {
+    public static void writeUsers(LinkedListIndexedList<User> users) throws IOException {
         ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream("users.dat"));
 
         output.writeObject(users);
