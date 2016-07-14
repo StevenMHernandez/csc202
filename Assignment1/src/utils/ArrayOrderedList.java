@@ -1,33 +1,33 @@
 package utils;
 
-import utils.Interfaces.IOrderedList;
+import utils.Interfaces.IOrderedListComparable;
 
-public class ArrayOrderedList<T extends Comparable<T>> extends ArrayBase<T> implements IOrderedList<T> {
+public class ArrayOrderedList<T extends Comparable<T>> extends ComparableArrayBase<T> implements IOrderedListComparable<T> {
 
     @Override
     public void add(T t) {
-        if (this.isFull()) {
+        if (this.isFull() || this.array.length == this.size + 1) {
             this.enlarge();
         }
 
-        if (this.size != 0) {
-            int count = 0;
-
-            // find where to place the item
-            if (this.array[count].compareTo(t) < 0) {
-                count++;
+        if (this.array[0] == null) { // if nothing
+            this.array[0] = t;
+        } else {
+            if (this.array[0].compareTo(t) < 0) {
+                int count = 0;
 
                 boolean complete = false;
 
                 do {
                     if (this.array[count].compareTo(t) < 0) {
-                        if (this.array[count] == null) {
+                        if (this.array[count + 1] == null) {
                             this.array[count + 1] = t;
                             complete = true;
-                        } else if (this.array[count].compareTo(t) > 0) {
+                        } else if (this.array[count + 1].compareTo(t) > 0) {
                             for (int i = count; i <= this.size; i++) {
-                                this.array[i] = this.array[i + 1];
+                                this.array[i + 1] = this.array[i];
                             }
+
                             this.array[count] = t;
                             complete = true;
                         }
@@ -35,19 +35,14 @@ public class ArrayOrderedList<T extends Comparable<T>> extends ArrayBase<T> impl
                     count++;
                 } while (!complete);
             } else {
-                for (int i = 0; i <= this.size; i++) {
-                    this.array[i] = this.array[i + 1];
+                for (int i = this.size; i >= 1; i--) {
+                    this.array[i] = this.array[i - 1];
                 }
                 this.array[0] = t;
             }
-            System.out.println("other");
-        } else {
-            System.out.println("okok");
-            this.array[0] = t;
         }
 
         this.size++;
-        System.out.println(this.size);
     }
 
     @Override
@@ -57,6 +52,8 @@ public class ArrayOrderedList<T extends Comparable<T>> extends ArrayBase<T> impl
         }
 
         this.array[this.size] = null;
+
+        this.size--;
     }
 
     public int indexOf(T t) {
@@ -89,13 +86,14 @@ public class ArrayOrderedList<T extends Comparable<T>> extends ArrayBase<T> impl
     }
 
     @Override
-    public T get(int i) {
+    public Comparable<T> get(int i) {
         return this.array[i];
     }
 
     @Override
     public void reset() {
         this.newArray();
+        this.size = 0;
     }
 
     @Override

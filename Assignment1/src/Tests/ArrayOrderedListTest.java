@@ -13,7 +13,7 @@ public class ArrayOrderedListTest {
         this.list.add("Bob");
         this.list.add("Carol");
         this.list.add("Ann");
-        assertEquals("Queue should be Ann Bob Carol", "LinkedListIndexedList{list={Ann Bob Carol}, length=3}", (String)list.toString());
+        assertEquals("Queue should be Ann Bob Carol", "ArrayBase{array={Ann Bob Carol}, size=3}", (String)list.toString());
     }
 
     @Test
@@ -22,7 +22,7 @@ public class ArrayOrderedListTest {
         this.list.add("Carol");
         this.list.add("Ann");
         this.list.remove(1);
-        assertEquals("Queue should be Ann Carol", "LinkedListIndexedList{list={Ann Carol}, length=2}", (String)list.toString());
+        assertEquals("Queue should be Ann Carol", "ArrayBase{array={Ann Carol}, size=2}", (String)list.toString());
     }
 
     @Test
