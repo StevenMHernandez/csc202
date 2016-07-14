@@ -1,9 +1,9 @@
 package utils.Interfaces;
 
 public interface IOrderedListComparable<E extends Comparable<E>> {
-    public void add(E t);
+    public void add(E t) throws Exception;
 
-    public void remove(int i);
+    public void remove(int i) throws Exception;
 
     public boolean contains(E e);
 

@@ -1,5 +1,7 @@
 package utils;
 
+import Exceptions.ElementAlreadyExistsException;
+import Exceptions.EmptyListException;
 import utils.Interfaces.IOrderedList;
 
 public class LinkedListOrderedList<T extends Comparable<T>> implements IOrderedList<T> {
@@ -7,7 +9,11 @@ public class LinkedListOrderedList<T extends Comparable<T>> implements IOrderedL
     private int length = 0;
 
     @Override
-    public void add(T t) {
+    public void add(T t) throws Exception {
+        if (this.contains(t)) {
+            throw new ElementAlreadyExistsException("Element already exists in the list");
+        }
+
         LinkedListNode<T> newNode = new LinkedListNode<T>(t, null);
         if (this.first == null) {
             first = newNode;
@@ -41,7 +47,11 @@ public class LinkedListOrderedList<T extends Comparable<T>> implements IOrderedL
     }
 
     @Override
-    public void remove(int i) {
+    public void remove(int i) throws Exception {
+        if (this.isEmpty()) {
+            throw new EmptyListException("Cannot remove from an empty list.");
+        }
+
         LinkedListNode<T> removedNode = this.getNthNode(i);
 
         this.getNthNode(i - 1).setPointer(removedNode.getPointer());

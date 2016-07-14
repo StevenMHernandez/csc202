@@ -1,11 +1,17 @@
 package utils;
 
+import Exceptions.ElementAlreadyExistsException;
+import Exceptions.EmptyListException;
 import utils.Interfaces.IOrderedListComparable;
 
 public class ArrayOrderedList<T extends Comparable<T>> extends ComparableArrayBase<T> implements IOrderedListComparable<T> {
 
     @Override
-    public void add(T t) {
+    public void add(T t) throws Exception {
+        if (this.contains(t)) {
+            throw new ElementAlreadyExistsException("Element already exists in the list");
+        }
+
         if (this.isFull() || this.array.length == this.size + 1) {
             this.enlarge();
         }
@@ -46,7 +52,11 @@ public class ArrayOrderedList<T extends Comparable<T>> extends ComparableArrayBa
     }
 
     @Override
-    public void remove(int index) {
+    public void remove(int index) throws Exception {
+        if (this.isEmpty()) {
+            throw new EmptyListException("Cannot remove from an empty list.");
+        }
+
         for (int i = index; i <= this.size; i++) {
             this.array[i] = this.array[i + 1];
         }

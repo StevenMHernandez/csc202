@@ -16,7 +16,11 @@ public class LinkedListStack<T> implements IStack<T> {
     }
 
     @Override
-    public T pop() {
+    public T pop() throws Exception {
+        if (this.isEmpty()) {
+            throw new EmptyListException("Cannot pop an empty Stack");
+        }
+
         LinkedListNode<T> current = this.top;
         this.top = current.getPointer();
         return current.getElement();

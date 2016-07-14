@@ -1,5 +1,6 @@
 package utils;
 
+import Exceptions.EmptyListException;
 import utils.Interfaces.IQueue;
 
 public class LinkedListQueue<T> implements IQueue<T> {
@@ -27,7 +28,7 @@ public class LinkedListQueue<T> implements IQueue<T> {
     @Override
     public T dequeue() throws Exception {
         if (this.isEmpty()) {
-            throw new Exception("No elements left in the Queue");
+            throw new EmptyListException("No elements left in the Queue");
         }
 
         LinkedListNode<T> dequeuedNode = this.head;

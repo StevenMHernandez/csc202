@@ -1,5 +1,6 @@
 package utils;
 
+import Exceptions.EmptyListException;
 import utils.Interfaces.IQueue;
 
 public class ArrayQueue<T> extends ArrayBase<T> implements IQueue<T> {
@@ -14,7 +15,11 @@ public class ArrayQueue<T> extends ArrayBase<T> implements IQueue<T> {
     }
 
     @Override
-    public T dequeue() {
+    public T dequeue() throws Exception {
+        if (this.isEmpty()) {
+            throw new EmptyListException("Cannot dequeue from an empty queue.");
+        }
+
         T dequeuedElement = this.array[0];
 
         // shift array to the left

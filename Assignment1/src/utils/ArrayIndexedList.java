@@ -1,11 +1,18 @@
 package utils;
 
+import Exceptions.ElementAlreadyExistsException;
+import Exceptions.EmptyListException;
 import utils.Interfaces.IIndexedList;
 
 public class ArrayIndexedList<T> extends ArrayBase<T> implements IIndexedList<T> {
 
     @Override
-    public void add(T t) {
+    public void add(T t) throws Exception {
+
+        if (this.contains(t)) {
+            throw new ElementAlreadyExistsException("Element already exists in the list");
+        }
+
         if (this.isFull()) {
             this.enlarge();
         }
@@ -20,7 +27,11 @@ public class ArrayIndexedList<T> extends ArrayBase<T> implements IIndexedList<T>
     }
 
     @Override
-    public void remove(int index) {
+    public void remove(int index) throws Exception {
+        if (this.isEmpty()) {
+            throw new EmptyListException("Cannot remove from an empty list.");
+        }
+
         for (int i = index; i <= this.size; i++) {
             this.array[i] = this.array[i + 1];
         }

@@ -1,11 +1,16 @@
 package utils;
 
+import Exceptions.EmptyListException;
 import utils.Interfaces.IStack;
 
 public class ArrayStack<T> extends ArrayBase<T> implements IStack<T> {
 
     @Override
-    public T top() {
+    public T top() throws Exception {
+        if (this.isEmpty()) {
+            throw new EmptyListException("Cannot top from an empty stack.");
+        }
+
         if (this.size == 0) {
             return null;
         }
@@ -13,7 +18,11 @@ public class ArrayStack<T> extends ArrayBase<T> implements IStack<T> {
     }
 
     @Override
-    public T pop() {
+    public T pop() throws Exception {
+        if (this.isEmpty()) {
+            throw new EmptyListException("Cannot pop from an empty stack.");
+        }
+
         T poppedElement = this.top();
 
         this.size--;

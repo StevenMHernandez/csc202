@@ -5,7 +5,7 @@ import Exceptions.EmptyListException;
 public interface IStack<T> {
     public T top() throws Exception;
 
-    public T pop();
+    public T pop() throws Exception;
 
     public void push(T element);
 

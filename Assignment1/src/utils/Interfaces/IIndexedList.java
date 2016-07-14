@@ -1,11 +1,11 @@
 package utils.Interfaces;
 
 public interface IIndexedList<E> {
-    public void add(E e);
+    public void add(E e) throws Exception;
 
     public void set(E e, int i);
 
-    public void remove(int i);
+    public void remove(int i) throws Exception;
 
     public int indexOf(E e);
 
