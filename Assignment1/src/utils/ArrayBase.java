@@ -11,7 +11,7 @@ public class ArrayBase<T> {
     protected void enlarge() {
         T[] old = this.array;
 
-        this.array = (T[]) new Object[array.length + 10];
+        this.newArray(this.array.length + 10);
 
         for (int i = 0; i <= old.length; i++) {
             this.array[i] = old[i];
@@ -31,7 +31,11 @@ public class ArrayBase<T> {
     }
 
     protected void newArray() {
-        this.array = (T[]) new Object[10];
+        this.newArray(10);
+    }
+
+    protected void newArray( int new_size) {
+        this.array = (T[]) new Object[new_size];
     }
 
     @Override

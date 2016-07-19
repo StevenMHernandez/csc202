@@ -3,9 +3,10 @@ package utils;
 import Exceptions.ElementAlreadyExistsException;
 import Exceptions.EmptyListException;
 import utils.Interfaces.IIndexedList;
-import utils.Interfaces.IStack;
 
-public class LinkedListIndexedList<T> implements IIndexedList<T> {
+import java.io.Serializable;
+
+public class LinkedListIndexedList<T> implements IIndexedList<T>, Serializable {
     private LinkedListNode<T> first = null;
     private int length = 0;
 
@@ -26,7 +27,7 @@ public class LinkedListIndexedList<T> implements IIndexedList<T> {
     }
 
     @Override
-    public void set(T t, int i) {
+    public void set(int i, T t) {
         if (i > length) {
             throw new IndexOutOfBoundsException();
         }
@@ -41,6 +42,9 @@ public class LinkedListIndexedList<T> implements IIndexedList<T> {
     public void remove(int i) throws Exception {
         if (this.isEmpty()) {
             throw new EmptyListException("Cannot remove from an empty list.");
+        }
+        if (i > this.length - 1) {
+            throw new IndexOutOfBoundsException();
         }
 
         LinkedListNode<T> removedNode = this.getNthNode(i);
@@ -102,6 +106,9 @@ public class LinkedListIndexedList<T> implements IIndexedList<T> {
     }
 
     private LinkedListNode<T> getNthNode(int i) throws NullPointerException {
+        if (i > this.length - 1) {
+            throw new IndexOutOfBoundsException();
+        }
         int count = 0;
         LinkedListNode<T> node = this.first;
         while (count < i && node != null) {

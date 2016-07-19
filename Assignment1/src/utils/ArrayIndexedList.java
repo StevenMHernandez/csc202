@@ -22,7 +22,11 @@ public class ArrayIndexedList<T> extends ArrayBase<T> implements IIndexedList<T>
     }
 
     @Override
-    public void set(T t, int i) {
+    public void set(int i, T t) {
+        if (i > this.size - 1) {
+            throw new IndexOutOfBoundsException();
+        }
+
         this.array[i] = t;
     }
 
@@ -30,6 +34,9 @@ public class ArrayIndexedList<T> extends ArrayBase<T> implements IIndexedList<T>
     public void remove(int index) throws Exception {
         if (this.isEmpty()) {
             throw new EmptyListException("Cannot remove from an empty list.");
+        }
+        if (index > this.size - 1) {
+            throw new IndexOutOfBoundsException();
         }
 
         for (int i = index; i <= this.size; i++) {
@@ -74,6 +81,10 @@ public class ArrayIndexedList<T> extends ArrayBase<T> implements IIndexedList<T>
 
     @Override
     public T get(int i) {
+        if (i > this.size - 1) {
+            throw new IndexOutOfBoundsException();
+        }
+
         return this.array[i];
     }
 

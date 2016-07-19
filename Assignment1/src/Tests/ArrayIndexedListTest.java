@@ -22,7 +22,7 @@ public class ArrayIndexedListTest {
         list.add("One");
         list.add("Two");
         list.add("Three");
-        list.set("2", 1);
+        list.set(1, "2");
         assertEquals("Queue should be One 2 Three", "ArrayBase{array={One 2 Three}, size=3}", (String)list.toString());
     }
 

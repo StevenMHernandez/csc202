@@ -1,6 +1,8 @@
 package utils;
 
-public class LinkedListNode <T> {
+import java.io.Serializable;
+
+public class LinkedListNode <T> implements Serializable {
 
     private T element;
     LinkedListNode <T> pointer;

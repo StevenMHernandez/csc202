@@ -22,7 +22,7 @@ public class LinkedListIndexedListTest {
         list.add("One");
         list.add("Two");
         list.add("Three");
-        list.set("2", 1);
+        list.set(1, "2");
         assertEquals("Queue should be One 2 Three", "LinkedListIndexedList{list={One 2 Three}, length=3}", (String)list.toString());
     }
 

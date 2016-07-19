@@ -51,6 +51,9 @@ public class LinkedListOrderedList<T extends Comparable<T>> implements IOrderedL
         if (this.isEmpty()) {
             throw new EmptyListException("Cannot remove from an empty list.");
         }
+        if (i > this.length - 1) {
+            throw new IndexOutOfBoundsException();
+        }
 
         LinkedListNode<T> removedNode = this.getNthNode(i);
 
@@ -110,6 +113,9 @@ public class LinkedListOrderedList<T extends Comparable<T>> implements IOrderedL
     }
 
     private LinkedListNode<T> getNthNode(int i) {
+        if (i > this.length - 1) {
+            throw new IndexOutOfBoundsException();
+        }
         int count = 0;
         LinkedListNode<T> node = this.first;
         while (count < i) {

@@ -5,6 +5,9 @@ import utils.ArrayQueue;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ *
+ */
 public class ArrayQueueTest {
     ArrayQueue<String> queue = new ArrayQueue<String>();
 

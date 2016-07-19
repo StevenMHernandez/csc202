@@ -3,7 +3,7 @@ package utils.Interfaces;
 public interface IIndexedList<E> {
     public void add(E e) throws Exception;
 
-    public void set(E e, int i);
+    public void set(int i, E e);
 
     public void remove(int i) throws Exception;
 

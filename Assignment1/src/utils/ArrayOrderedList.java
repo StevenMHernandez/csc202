@@ -56,6 +56,9 @@ public class ArrayOrderedList<T extends Comparable<T>> extends ComparableArrayBa
         if (this.isEmpty()) {
             throw new EmptyListException("Cannot remove from an empty list.");
         }
+        if (index > this.size - 1) {
+            throw new IndexOutOfBoundsException();
+        }
 
         for (int i = index; i <= this.size; i++) {
             this.array[i] = this.array[i + 1];
@@ -99,6 +102,10 @@ public class ArrayOrderedList<T extends Comparable<T>> extends ComparableArrayBa
 
     @Override
     public Comparable<T> get(int i) {
+        if (i > this.size - 1) {
+            throw new IndexOutOfBoundsException();
+        }
+
         return this.array[i];
     }
 
