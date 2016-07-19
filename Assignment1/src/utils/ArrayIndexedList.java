@@ -93,7 +93,7 @@ public class ArrayIndexedList<T> extends ArrayBase<T> implements IIndexedList<T>
             }
         }
 
-        count =  -1;
+        count = -1;
         this.index = count;
         return count;
     }
@@ -162,6 +162,7 @@ public class ArrayIndexedList<T> extends ArrayBase<T> implements IIndexedList<T>
      */
     @Override
     public T getNext() {
+        this.index++;
         return this.get(this.index + 1);
     }
 }

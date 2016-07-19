@@ -102,7 +102,7 @@ public class LinkedListOrderedList<T extends Comparable<T>> implements IOrderedL
             }
         }
 
-        count =  -1;
+        count = -1;
         this.index = count;
         return count;
     }
@@ -165,6 +165,7 @@ public class LinkedListOrderedList<T extends Comparable<T>> implements IOrderedL
      */
     @Override
     public T getNext() {
+        this.index++;
         return this.get(this.index + 1);
     }
 

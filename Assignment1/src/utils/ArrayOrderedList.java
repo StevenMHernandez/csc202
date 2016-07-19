@@ -107,7 +107,7 @@ public class ArrayOrderedList<T extends Comparable<T>> extends ComparableArrayBa
             }
         }
 
-        count =  -1;
+        count = -1;
         this.index = count;
         return count;
     }
@@ -176,6 +176,7 @@ public class ArrayOrderedList<T extends Comparable<T>> extends ComparableArrayBa
      */
     @Override
     public Comparable<T> getNext() {
+        this.index++;
         return this.get(this.index + 1);
     }
 

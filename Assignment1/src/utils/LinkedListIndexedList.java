@@ -102,7 +102,7 @@ public class LinkedListIndexedList<T> implements IIndexedList<T>, Serializable {
             }
         }
 
-        count =  -1;
+        count = -1;
         this.index = count;
         return count;
     }
@@ -165,7 +165,8 @@ public class LinkedListIndexedList<T> implements IIndexedList<T>, Serializable {
      */
     @Override
     public T getNext() {
-        return this.get(this.index + 1);
+        this.index++;
+        return this.get(this.index);
     }
 
     /**
