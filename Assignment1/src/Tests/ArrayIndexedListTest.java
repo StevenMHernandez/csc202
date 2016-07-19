@@ -80,4 +80,13 @@ public class ArrayIndexedListTest {
         list.reset();
         assertEquals("List should be empty", 0, list.size());
     }
+
+    @Test
+    public void testGetNext() throws Exception {
+        this.list.add("Ann");
+        this.list.add("Bob");
+        this.list.add("Carol");
+        this.list.get(0);
+        assertEquals("Next should be Bob", "Bob", list.getNext());
+    }
 }

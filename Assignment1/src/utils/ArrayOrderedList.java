@@ -8,6 +8,9 @@ import utils.Interfaces.IOrderedListComparable;
  * @param <T>
  */
 public class ArrayOrderedList<T extends Comparable<T>> extends ComparableArrayBase<T> implements IOrderedListComparable<T> {
+
+    private int index = 0;
+
     /**
      * adds element in order
      *
@@ -57,6 +60,7 @@ public class ArrayOrderedList<T extends Comparable<T>> extends ComparableArrayBa
         }
 
         this.size++;
+        this.index = size;
     }
 
     /**
@@ -81,6 +85,7 @@ public class ArrayOrderedList<T extends Comparable<T>> extends ComparableArrayBa
         this.array[this.size] = null;
 
         this.size--;
+        this.index = index;
     }
 
     /**
@@ -102,7 +107,9 @@ public class ArrayOrderedList<T extends Comparable<T>> extends ComparableArrayBa
             }
         }
 
-        return -1;
+        count =  -1;
+        this.index = count;
+        return count;
     }
 
     /**
@@ -148,6 +155,8 @@ public class ArrayOrderedList<T extends Comparable<T>> extends ComparableArrayBa
             throw new IndexOutOfBoundsException();
         }
 
+        this.index = i;
+
         return this.array[i];
     }
 
@@ -166,8 +175,8 @@ public class ArrayOrderedList<T extends Comparable<T>> extends ComparableArrayBa
      * @return T
      */
     @Override
-    public T getNext() {
-        return null;
+    public Comparable<T> getNext() {
+        return this.get(this.index + 1);
     }
 
 }

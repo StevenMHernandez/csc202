@@ -13,6 +13,8 @@ public class LinkedListIndexedList<T> implements IIndexedList<T>, Serializable {
     private LinkedListNode<T> first = null;
     private int length = 0;
 
+    private int index = 0;
+
     /**
      * adds element
      *
@@ -33,6 +35,7 @@ public class LinkedListIndexedList<T> implements IIndexedList<T>, Serializable {
         }
 
         this.length++;
+        this.index = length;
     }
 
     /**
@@ -51,6 +54,7 @@ public class LinkedListIndexedList<T> implements IIndexedList<T>, Serializable {
         LinkedListNode<T> newNode = new LinkedListNode<T>(t, replacedNode.getPointer());
 
         this.getNthNode(i - 1).setPointer(newNode);
+        this.index = i;
     }
 
     /**
@@ -98,7 +102,9 @@ public class LinkedListIndexedList<T> implements IIndexedList<T>, Serializable {
             }
         }
 
-        return -1;
+        count =  -1;
+        this.index = count;
+        return count;
     }
 
     /**
@@ -159,7 +165,7 @@ public class LinkedListIndexedList<T> implements IIndexedList<T>, Serializable {
      */
     @Override
     public T getNext() {
-        return null;
+        return this.get(this.index + 1);
     }
 
     /**
@@ -182,6 +188,9 @@ public class LinkedListIndexedList<T> implements IIndexedList<T>, Serializable {
         if (node == null) {
             throw new NullPointerException();
         }
+
+        this.index = i;
+
         return node;
     }
 

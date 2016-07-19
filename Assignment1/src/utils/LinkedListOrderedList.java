@@ -11,6 +11,8 @@ public class LinkedListOrderedList<T extends Comparable<T>> implements IOrderedL
     private LinkedListNode<T> first = null;
     private int length = 0;
 
+    private int index = 0;
+
     /**
      * adds element in alpha-numeric order
      *
@@ -53,6 +55,7 @@ public class LinkedListOrderedList<T extends Comparable<T>> implements IOrderedL
         }
 
         this.length++;
+        this.index = length;
     }
 
     /**
@@ -99,7 +102,9 @@ public class LinkedListOrderedList<T extends Comparable<T>> implements IOrderedL
             }
         }
 
-        return -1;
+        count =  -1;
+        this.index = count;
+        return count;
     }
 
     /**
@@ -160,7 +165,7 @@ public class LinkedListOrderedList<T extends Comparable<T>> implements IOrderedL
      */
     @Override
     public T getNext() {
-        return null;
+        return this.get(this.index + 1);
     }
 
     /**
@@ -179,6 +184,9 @@ public class LinkedListOrderedList<T extends Comparable<T>> implements IOrderedL
             node = node.getPointer();
             count++;
         }
+
+        this.index = i;
+
         return node;
     }
 

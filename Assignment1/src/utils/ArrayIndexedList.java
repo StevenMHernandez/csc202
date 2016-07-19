@@ -8,6 +8,9 @@ import utils.Interfaces.IIndexedList;
  * @param <T>
  */
 public class ArrayIndexedList<T> extends ArrayBase<T> implements IIndexedList<T> {
+
+    private int index = 0;
+
     /**
      * adds element to array
      *
@@ -16,7 +19,6 @@ public class ArrayIndexedList<T> extends ArrayBase<T> implements IIndexedList<T>
      */
     @Override
     public void add(T t) throws Exception {
-
         if (this.contains(t)) {
             throw new ElementAlreadyExistsException("Element already exists in the list");
         }
@@ -27,6 +29,7 @@ public class ArrayIndexedList<T> extends ArrayBase<T> implements IIndexedList<T>
 
         this.array[this.size] = t;
         this.size++;
+        this.index = size;
     }
 
     /**
@@ -42,6 +45,8 @@ public class ArrayIndexedList<T> extends ArrayBase<T> implements IIndexedList<T>
         }
 
         this.array[i] = t;
+
+        this.index = i;
     }
 
     /**
@@ -65,6 +70,7 @@ public class ArrayIndexedList<T> extends ArrayBase<T> implements IIndexedList<T>
 
         this.array[this.size] = null;
         this.size--;
+        this.index = index;
     }
 
     /**
@@ -87,7 +93,9 @@ public class ArrayIndexedList<T> extends ArrayBase<T> implements IIndexedList<T>
             }
         }
 
-        return -1;
+        count =  -1;
+        this.index = count;
+        return count;
     }
 
     /**
@@ -133,6 +141,8 @@ public class ArrayIndexedList<T> extends ArrayBase<T> implements IIndexedList<T>
             throw new IndexOutOfBoundsException();
         }
 
+        this.index = i;
+
         return this.array[i];
     }
 
@@ -152,6 +162,6 @@ public class ArrayIndexedList<T> extends ArrayBase<T> implements IIndexedList<T>
      */
     @Override
     public T getNext() {
-        return null;
+        return this.get(this.index + 1);
     }
 }
