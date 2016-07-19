@@ -3,8 +3,15 @@ package utils;
 import Exceptions.EmptyListException;
 import utils.Interfaces.IQueue;
 
+/**
+ * @param <T>
+ */
 public class ArrayQueue<T> extends ArrayBase<T> implements IQueue<T> {
-
+    /**
+     * adds element to end of queue
+     *
+     * @param element T
+     */
     @Override
     public void enqueue(T element) {
         if (this.isFull()) this.enlarge();
@@ -14,6 +21,12 @@ public class ArrayQueue<T> extends ArrayBase<T> implements IQueue<T> {
         this.size++;
     }
 
+    /**
+     * remove head from queue
+     *
+     * @return T
+     * @throws Exception
+     */
     @Override
     public T dequeue() throws Exception {
         if (this.isEmpty()) {

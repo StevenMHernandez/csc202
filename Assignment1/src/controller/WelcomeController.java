@@ -9,6 +9,9 @@ import model.Session;
 import model.User;
 import view.LoginJavaFXView;
 
+/**
+ * Welcome Screen Controller
+ */
 public class WelcomeController {
     @FXML
     Label username;
@@ -16,6 +19,9 @@ public class WelcomeController {
     @FXML
     ImageView photo;
 
+    /**
+     * after initialize
+     */
     public void initialize() {
         User user = Session.getCurrentUser();
 
@@ -24,11 +30,18 @@ public class WelcomeController {
         if (!user.getPhoto().isEmpty()) photo.setImage(new Image("file:" + user.getPhoto()));
     }
 
+    /**
+     * logout
+     * @throws Exception
+     */
     public void logOut() throws Exception {
         new LoginJavaFXView().loadView();
         this.closeWindow();
     }
 
+    /**
+     * Closes the currently opened window
+     */
     private void closeWindow() {
         Stage stage = (Stage) username.getScene().getWindow();
         stage.close();

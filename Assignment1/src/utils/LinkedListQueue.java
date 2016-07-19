@@ -3,15 +3,26 @@ package utils;
 import Exceptions.EmptyListException;
 import utils.Interfaces.IQueue;
 
+/**
+ * @param <T>
+ */
 public class LinkedListQueue<T> implements IQueue<T> {
     LinkedListNode<T> head;
     LinkedListNode<T> tail;
 
+    /**
+     * Constructor
+     */
     public LinkedListQueue() {
         this.head = null;
         this.tail = null;
     }
 
+    /**
+     * adds element to end of queue
+     *
+     * @param element T
+     */
     @Override
     public void enqueue(T element) {
         LinkedListNode<T> newNode = new LinkedListNode<T>(element, null);
@@ -25,6 +36,12 @@ public class LinkedListQueue<T> implements IQueue<T> {
         this.tail = newNode;
     }
 
+    /**
+     * removes the head element (first in)
+     *
+     * @return T
+     * @throws Exception
+     */
     @Override
     public T dequeue() throws Exception {
         if (this.isEmpty()) {
@@ -38,16 +55,31 @@ public class LinkedListQueue<T> implements IQueue<T> {
         return dequeuedNode.getElement();
     }
 
+    /**
+     * returns true if empty
+     *
+     * @return boolean
+     */
     @Override
     public boolean isEmpty() {
         return this.head == null;
     }
 
+    /**
+     * returns true if full (never(
+     *
+     * @return boolean
+     */
     @Override
     public boolean isFull() {
         return false;
     }
 
+    /**
+     * returns size
+     *
+     * @return int
+     */
     @Override
     public int size() {
         if (this.head != null) {
@@ -63,6 +95,9 @@ public class LinkedListQueue<T> implements IQueue<T> {
         }
     }
 
+    /**
+     * @return String
+     */
     @Override
     public String toString() {
         return "LinkedListIndexedList{" +

@@ -4,10 +4,19 @@ import Exceptions.ElementAlreadyExistsException;
 import Exceptions.EmptyListException;
 import utils.Interfaces.IOrderedList;
 
+/**
+ * @param <T>
+ */
 public class LinkedListOrderedList<T extends Comparable<T>> implements IOrderedList<T> {
     private LinkedListNode<T> first = null;
     private int length = 0;
 
+    /**
+     * adds element in alpha-numeric order
+     *
+     * @param t T
+     * @throws Exception
+     */
     @Override
     public void add(T t) throws Exception {
         if (this.contains(t)) {
@@ -46,6 +55,12 @@ public class LinkedListOrderedList<T extends Comparable<T>> implements IOrderedL
         this.length++;
     }
 
+    /**
+     * removes element at index
+     *
+     * @param i T
+     * @throws Exception
+     */
     @Override
     public void remove(int i) throws Exception {
         if (this.isEmpty()) {
@@ -62,6 +77,12 @@ public class LinkedListOrderedList<T extends Comparable<T>> implements IOrderedL
         this.length--;
     }
 
+    /**
+     * returns the index of an element
+     *
+     * @param t T
+     * @return int
+     */
     public int indexOf(T t) {
         if (this.size() == 0) return -1;
 
@@ -81,37 +102,73 @@ public class LinkedListOrderedList<T extends Comparable<T>> implements IOrderedL
         return -1;
     }
 
+    /**
+     * returns true if list contains an element
+     *
+     * @param t T
+     * @return boolean
+     */
     @Override
     public boolean contains(T t) {
         return this.indexOf(t) >= 0;
     }
 
+    /**
+     * returns true if list is empty
+     *
+     * @return boolean
+     */
     @Override
     public boolean isEmpty() {
         return this.first == null;
     }
 
+    /**
+     * returns size
+     *
+     * @return int
+     */
     @Override
     public int size() {
         return this.length;
     }
 
+    /**
+     * returns element at index
+     *
+     * @param i int
+     * @return T
+     */
     @Override
     public T get(int i) {
         return this.getNthNode(i).getElement();
     }
 
+    /**
+     * resets list
+     */
     @Override
     public void reset() {
         this.first = null;
         this.length = 0;
     }
 
+    /**
+     * gets next element
+     *
+     * @return T
+     */
     @Override
     public T getNext() {
         return null;
     }
 
+    /**
+     * returns element at index i
+     *
+     * @param i int
+     * @return T
+     */
     private LinkedListNode<T> getNthNode(int i) {
         if (i > this.length - 1) {
             throw new IndexOutOfBoundsException();
@@ -125,6 +182,9 @@ public class LinkedListOrderedList<T extends Comparable<T>> implements IOrderedL
         return node;
     }
 
+    /**
+     * @return String
+     */
     @Override
     public String toString() {
         return "LinkedListIndexedList{" +

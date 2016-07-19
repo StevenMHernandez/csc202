@@ -4,8 +4,16 @@ import Exceptions.ElementAlreadyExistsException;
 import Exceptions.EmptyListException;
 import utils.Interfaces.IOrderedListComparable;
 
+/**
+ * @param <T>
+ */
 public class ArrayOrderedList<T extends Comparable<T>> extends ComparableArrayBase<T> implements IOrderedListComparable<T> {
-
+    /**
+     * adds element in order
+     *
+     * @param t T
+     * @throws Exception
+     */
     @Override
     public void add(T t) throws Exception {
         if (this.contains(t)) {
@@ -51,6 +59,12 @@ public class ArrayOrderedList<T extends Comparable<T>> extends ComparableArrayBa
         this.size++;
     }
 
+    /**
+     * removes element from index `index`
+     *
+     * @param index int
+     * @throws Exception
+     */
     @Override
     public void remove(int index) throws Exception {
         if (this.isEmpty()) {
@@ -69,6 +83,12 @@ public class ArrayOrderedList<T extends Comparable<T>> extends ComparableArrayBa
         this.size--;
     }
 
+    /**
+     * returns the index of element t
+     *
+     * @param t T
+     * @return int
+     */
     public int indexOf(T t) {
         if (this.size() == 0) return -1;
 
@@ -85,21 +105,43 @@ public class ArrayOrderedList<T extends Comparable<T>> extends ComparableArrayBa
         return -1;
     }
 
+    /**
+     * returns true if array contains element
+     *
+     * @param t T
+     * @return boolean
+     */
     @Override
     public boolean contains(T t) {
         return this.indexOf(t) >= 0;
     }
 
+    /**
+     * returns true if empty
+     *
+     * @return boolean
+     */
     @Override
     public boolean isEmpty() {
         return this.size() == 0;
     }
 
+    /**
+     * returns size
+     *
+     * @return int
+     */
     @Override
     public int size() {
         return this.size;
     }
 
+    /**
+     * returns element at i
+     *
+     * @param i int
+     * @return T
+     */
     @Override
     public Comparable<T> get(int i) {
         if (i > this.size - 1) {
@@ -109,12 +151,20 @@ public class ArrayOrderedList<T extends Comparable<T>> extends ComparableArrayBa
         return this.array[i];
     }
 
+    /**
+     * resets array
+     */
     @Override
     public void reset() {
         this.newArray();
         this.size = 0;
     }
 
+    /**
+     * gets next element
+     *
+     * @return T
+     */
     @Override
     public T getNext() {
         return null;

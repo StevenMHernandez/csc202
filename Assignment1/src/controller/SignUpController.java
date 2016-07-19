@@ -26,6 +26,11 @@ public class SignUpController {
 
     String photoPath;
 
+    /**
+     * Sign, validates and if valid, saves User to UserDB
+     *
+     * @throws Exception
+     */
     public void signUp() throws Exception {
         /*
          *
@@ -74,10 +79,22 @@ public class SignUpController {
         this.openLoginView();
     }
 
+    /**
+     * Helper to style a textfield
+     *
+     * @param field
+     * @param color
+     */
     public void styleTextField(TextField field, String color) {
         field.setStyle("-fx-background-color: " + color + ";");
     }
 
+    /**
+     * Helper to style a datapicker
+     *
+     * @param field
+     * @param color
+     */
     public void styleTextField(DatePicker field, String color) {
         field.setStyle("-fx-background-color: " + color + ";");
     }
@@ -88,6 +105,9 @@ public class SignUpController {
      *
      */
 
+    /**
+     * Opens select Photo window
+     */
     public void selectPhoto() {
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Open File");
@@ -103,12 +123,20 @@ public class SignUpController {
         }
     }
 
+    /**
+     * Opens login view
+     *
+     * @throws Exception
+     */
     public void openLoginView() throws Exception {
         new LoginJavaFXView().loadView();
 
         this.closeWindow();
     }
 
+    /**
+     * Closes the currently opened window
+     */
     private void closeWindow() {
         Stage stage = (Stage) username.getScene().getWindow();
         stage.close();
@@ -120,6 +148,12 @@ public class SignUpController {
      *
      */
 
+    /**
+     * Validates password has 1 number, capital letter, lowercase letter and a special character
+     *
+     * @param password
+     * @return boolean
+     */
     private boolean isValidPassword(String password) {
         Pattern number = Pattern.compile("[0-9]");
         Pattern upperCase = Pattern.compile("[A-Z]");
@@ -132,10 +166,21 @@ public class SignUpController {
                 && specialCharacter.matcher(password).find());
     }
 
+    /**
+     * validates email based on assignment's definition of an email
+     *
+     * @param email
+     * @return
+     */
     private boolean isValidEmail(String email) {
         return email.contains("@mail.");
     }
 
+    /**
+     * Checks all required fields contain some value
+     *
+     * @return
+     */
     private boolean areAllRequiredFieldsFilled() {
         boolean result = true;
 
@@ -151,6 +196,12 @@ public class SignUpController {
         return result;
     }
 
+    /**
+     * Draws a red outline around empty required field
+     *
+     * @param field
+     * @return
+     */
     private boolean checkRequiredField(TextField field) {
         if (field.getText().isEmpty()) {
             styleTextField(field, "#c66");
@@ -161,6 +212,12 @@ public class SignUpController {
         return true;
     }
 
+    /**
+     * Draws a red outline around empty required field
+     *
+     * @param field
+     * @return
+     */
     private boolean checkRequiredField(DatePicker field) {
         if (field.getValue() == null) {
             styleTextField(field, "#c66");
@@ -177,11 +234,22 @@ public class SignUpController {
      *
      */
 
+    /**
+     * Shows an alert box
+     *
+     * @param alertString
+     * @param color
+     */
     private void showAlert(String alertString, String color) {
         alert.setText(alertString);
         alert.setStyle("-fx-text-fill: " + color + ";");
     }
 
+    /**
+     * Shows an error box
+     *
+     * @param alertString
+     */
     public void errorAlert(String alertString) {
         showAlert(alertString, "#c66");
     }
