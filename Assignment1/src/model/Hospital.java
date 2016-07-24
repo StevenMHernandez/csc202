@@ -1,6 +1,6 @@
 package model;
 
-public class Hospital {
+public class Hospital implements Comparable<Hospital> {
     private String name;
     private String  address;
     private Location location;
@@ -53,6 +53,11 @@ public class Hospital {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    @Override
+    public int compareTo(Hospital hospital) {
+        return this.location.compareTo(hospital.getLocation());
     }
 
     @Override

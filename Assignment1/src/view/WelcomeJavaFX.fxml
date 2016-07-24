@@ -23,6 +23,7 @@
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />
+      <RowConstraints />
    </rowConstraints>
    <children>
       <Label text="WELCOME!" textAlignment="CENTER" GridPane.rowIndex="1">
@@ -34,7 +35,9 @@
          </font>
       </Label>
       <Label fx:id="username" text="" GridPane.rowIndex="2" />
-      <ImageView fx:id="photo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3" />
-      <Button mnemonicParsing="false" onMouseClicked="#logOut" text="Log Out" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+      <ImageView fx:id="photo" fitHeight="68.0" fitWidth="362.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3" />
+      <Button mnemonicParsing="false" onMouseClicked="#logOut" text="Log Out" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+      <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+      </TableView>
    </children>
 </GridPane>

@@ -11,7 +11,6 @@ import model.UserIO;
 import utils.LinkedListIndexedList;
 
 import java.io.IOException;
-import java.util.LinkedList;
 
 public class LoginJavaFXView extends Application {
 

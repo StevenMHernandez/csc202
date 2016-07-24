@@ -153,10 +153,13 @@ public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchT
         try {
             switch (orderType) {
                 case IN_ORDER:
+                    if (this.inOrderQueue.isEmpty()) return null;
                     return this.inOrderQueue.dequeue();
                 case PRE_ORDER:
+                    if (this.preOrderQueue.isEmpty()) return null;
                     return this.preOrderQueue.dequeue();
                 case POST_ORDER:
+                    if (this.postOrderQueue.isEmpty()) return null;
                     return this.postOrderQueue.dequeue();
                 default:
                     break;
