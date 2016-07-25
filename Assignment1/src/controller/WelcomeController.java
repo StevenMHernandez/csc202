@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.*;
 import utils.BinarySearchTree;
+import view.HospitalShowJavaFXView;
 import view.LoginJavaFXView;
 
 /**
@@ -140,5 +141,11 @@ public class WelcomeController {
      */
     public void updateSearch(Event event) {
         this.resetFilteredList(searchbox.getText());
+    }
+
+    public void showHospital(Event event) throws Exception {
+        Hospital hospital = (Hospital)table.getSelectionModel().getSelectedItem();
+
+        new HospitalShowJavaFXView(hospital);
     }
 }
