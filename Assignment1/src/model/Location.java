@@ -9,6 +9,14 @@ public class Location implements Comparable<Location> {
         this.longitude = longitude;
     }
 
+    public double getLatitude() {
+        return this.latitude;
+    }
+
+    public double getLongitude() {
+        return this.longitude;
+    }
+
     @Override
     public int compareTo(Location location) {
         if (this.latitude != location.latitude) {
