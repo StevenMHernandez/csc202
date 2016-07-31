@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.*;
 import utils.BinarySearchTree;
+import utils.DistanceCalculator;
 import view.HospitalShowJavaFXView;
 import view.LoginJavaFXView;
 
@@ -24,12 +25,15 @@ public class WelcomeController {
 
     public TableView table;
     public TextField searchbox;
+    public TextField radius;
 
     @FXML
     Label username;
 
     @FXML
     ImageView photo;
+
+    private Location location;
 
     private final ObservableList<Hospital> all_hospitals = FXCollections.observableArrayList();
     private final ObservableList<Hospital> filtered_hospitals = FXCollections.observableArrayList();
@@ -44,7 +48,20 @@ public class WelcomeController {
 
         if (!user.getPhoto().isEmpty()) photo.setImage(new Image("file:" + user.getPhoto()));
 
+        this.location = this.randomLocation();
+
         this.loadHospitals();
+    }
+
+    private Location randomLocation() {
+        return new Location(38.9071920, -77.0368710); // Washington, DC
+//        return new Location(38.3031840, -77.4605400); // Fredericksburg, VA
+//        return new Location(37.5407250, -77.4360480); // Richmond, VA
+
+        // actual random location
+//        double latitude = (Math.random() * 60) + 10; // 10 -> 70
+//        double longitude = (Math.random() * 200) - 100; // -100 -> 100
+//        return new Location(latitude, longitude);
     }
 
     /**
@@ -72,7 +89,7 @@ public class WelcomeController {
      */
     private void loadHospitals() throws Exception {
         // Load hospitals
-        BinarySearchTree<Hospital> hospitals = new HospitalDB().getList();
+        BinarySearchTree<Hospital> hospitals = new HospitalDB(this.location).getList();
 
         hospitals.reset(BinarySearchTree.IN_ORDER);
 
@@ -103,21 +120,16 @@ public class WelcomeController {
     }
 
     /**
-     * Resets filter without any search terms
+     * Resets filtered list
      */
     private void resetFilteredList() {
-        this.resetFilteredList("");
-    }
-
-    /**
-     * @param query String
-     */
-    private void resetFilteredList(String query) {
         this.filtered_hospitals.remove(0, this.filtered_hospitals.size());
 
         for (Hospital hospital : all_hospitals) {
-            if (query.isEmpty() || this.searchHospital(hospital, query)) {
-                this.filtered_hospitals.add(hospital);
+            if (searchbox.getText().isEmpty() || this.searchHospital(hospital, searchbox.getText())) {
+                if (radius.getText().isEmpty() || DistanceCalculator.distance(this.location, hospital.getLocation()) <= Double.parseDouble(this.radius.getText())) {
+                    this.filtered_hospitals.add(hospital);
+                }
             }
         }
     }
@@ -140,12 +152,21 @@ public class WelcomeController {
      * @param event Event
      */
     public void updateSearch(Event event) {
-        this.resetFilteredList(searchbox.getText());
+        this.resetFilteredList();
     }
 
     public void showHospital(Event event) throws Exception {
-        Hospital hospital = (Hospital)table.getSelectionModel().getSelectedItem();
+        Hospital hospital = (Hospital) table.getSelectionModel().getSelectedItem();
 
         new HospitalShowJavaFXView(hospital);
+    }
+
+    public void updateRadius(Event event) {
+        try {
+            Double.parseDouble(this.radius.getText());
+            this.resetFilteredList();
+        } catch (Exception e) {
+            // warn user
+        }
     }
 }

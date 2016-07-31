@@ -23,11 +23,19 @@ public class HospitalDB {
     private String filename = "hospitals.xls";
     BinarySearchTree<Hospital> list = new BinarySearchTree<Hospital>();
 
+    private Location comparableLocation;
+
     public BinarySearchTree<Hospital> getList() {
         return list;
     }
 
     public HospitalDB() throws Exception {
+        this.load();
+    }
+
+    public HospitalDB(Location location) throws Exception {
+        this.comparableLocation = location;
+
         this.load();
     }
 
@@ -59,6 +67,10 @@ public class HospitalDB {
                 String image = ((Cell) cells.next()).getStringCellValue();
 
                 Location loc = new Location(latitude, longitude);
+
+                if (this.comparableLocation != null) {
+                    loc.addComparableLocation(this.comparableLocation);
+                }
 
                 this.list.add(new Hospital(address, image, loc, name, phone));
             }
