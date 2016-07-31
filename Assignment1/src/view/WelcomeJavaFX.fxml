@@ -41,5 +41,6 @@
       <TableView fx:id="table" onMouseClicked="#showHospital" prefHeight="300.0" prefWidth="450.0" GridPane.rowIndex="5">
       </TableView>
       <TextField fx:id="searchbox" onKeyPressed="#updateSearch" promptText="Filter" GridPane.rowIndex="4" />
+      <TextField fx:id="radius" prefHeight="27.0" prefWidth="231.0" promptText="Radius" GridPane.rowIndex="3" />
    </children>
 </GridPane>
